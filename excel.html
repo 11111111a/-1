@@ -1,0 +1,36 @@
+<html>
+<head><title>導出數據</title>
+<style type="text/css">
+ td{width:40px;
+  border:1px solid red;
+}
+table{
+border-collapse:collapse;
+}
+</style>
+</head>
+<body align=center>
+<table>
+<tr width=160><td>姓名</td><td>語文</td><td>數學</td></tr>
+<tr width=160><td>張三</td><td>99</td><td>67</td></tr>
+<tr width=160><td>李四</td><td>87</td><td>88</td></tr>
+<tr width=160><td>王武</td><td>56</td><td>100</td></tr>
+<tr align=right width=60><td colspan="3"><button onclick="f()">導出</button></td></tr>
+</table>
+</body>
+<script type="text/javascript">
+function f(){
+var tabid=document.getElementsByTagName("table")[0];
+var excel=new ActiveXObject("Excel.Application");
+var works=excel.workbooks.Add();
+var sheet=works.ActiveSheet;
+ var sel = document.body.createTextRange();  
+            sel.moveToElementText(tabid);  
+            sel.execCommand("select");  
+            sel.execCommand("Copy");  
+            sheet.Paste();  
+            excel.Visible = true;  
+
+}
+</script>
+</html>
